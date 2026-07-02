@@ -1,0 +1,152 @@
+.history-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.history-card {
+  overflow: hidden;
+}
+
+.history-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 18px 20px;
+  cursor: pointer;
+  user-select: none;
+  flex-wrap: wrap;
+}
+
+.history-card-header:hover {
+  background: var(--paper-100);
+}
+
+.history-card-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.history-label {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--green-800);
+}
+
+.history-date {
+  font-size: 0.8rem;
+  color: var(--ink-700);
+}
+
+.history-votes {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--gold-500);
+}
+
+.history-card-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.history-body {
+  border-top: 1px solid var(--line);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  animation: grid-in 0.2s ease;
+}
+
+.history-role-title {
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  color: var(--green-900);
+  margin: 0 0 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.history-candidates {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.history-candidate {
+  padding: 10px 14px;
+  border-radius: var(--radius-sm);
+  background: var(--paper-100);
+  border: 1px solid var(--line);
+}
+
+.history-winner {
+  border-color: var(--gold-500);
+  background: rgba(201, 162, 39, 0.06);
+}
+
+.history-candidate-top {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+
+.history-crown {
+  color: var(--gold-500);
+  display: flex;
+  align-items: center;
+}
+
+.history-candidate-name {
+  font-weight: 600;
+  font-size: 0.88rem;
+  flex: 1;
+}
+
+.history-candidate-votes {
+  font-size: 0.82rem;
+  color: var(--ink-700);
+  font-weight: 600;
+}
+
+.history-candidate-pct {
+  font-size: 0.8rem;
+  color: var(--ink-700);
+  min-width: 40px;
+  text-align: right;
+}
+
+.history-bar-track {
+  height: 6px;
+  background: var(--line);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.history-bar-fill {
+  height: 100%;
+  background: var(--green-700);
+  border-radius: 999px;
+  animation: bar-grow 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.history-bar-winner {
+  background: var(--gold-500);
+}
+
+@media (max-width: 640px) {
+  .history-card-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .history-card-actions {
+    width: 100%;
+  }
+}

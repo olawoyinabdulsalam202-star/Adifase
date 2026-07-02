@@ -1,0 +1,223 @@
+:root {
+  --green-900: #0a3a28;
+  --green-800: #0c4a32;
+  --green-700: #0f7a4a;
+  --green-600: #149158;
+  --gold-500: #d99a1f;
+  --gold-400: #e8b13e;
+  --ink-900: #1a2420;
+  --ink-700: #4a5550;
+  --paper-0: #fbfaf7;
+  --paper-100: #f3f1ea;
+  --line: #e2ddcf;
+  --danger: #c0392b;
+  --success: #1f9254;
+  --warning: #d99a1f;
+
+  --font-display: "Source Serif 4", Georgia, "Times New Roman", serif;
+  --font-body: "Inter", "Segoe UI", system-ui, -apple-system, sans-serif;
+  --font-mono: "JetBrains Mono", Menlo, monospace;
+
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --shadow-card: 0 1px 2px rgba(10, 58, 40, 0.06), 0 6px 16px rgba(10, 58, 40, 0.06);
+  --shadow-pop: 0 16px 40px rgba(10, 58, 40, 0.22);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-body);
+  color: var(--ink-900);
+  background: var(--paper-0);
+  -webkit-font-smoothing: antialiased;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+}
+
+input, select, textarea {
+  font-family: inherit;
+}
+
+a {
+  color: inherit;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+}
+
+:focus-visible {
+  outline: 3px solid var(--gold-500);
+  outline-offset: 2px;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border: none;
+  border-radius: var(--radius-sm);
+  padding: 12px 20px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  transition: transform 0.12s ease, box-shadow 0.12s ease, background 0.12s ease;
+}
+
+.btn:active {
+  transform: scale(0.97);
+}
+
+.btn-primary {
+  background: var(--green-700);
+  color: var(--paper-0);
+}
+
+.btn-primary:hover {
+  background: var(--green-600);
+}
+
+.btn-primary:disabled {
+  background: #9fb3ac;
+  cursor: not-allowed;
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--green-800);
+  border: 1.5px solid var(--green-800);
+}
+
+.btn-outline:hover {
+  background: rgba(11, 59, 46, 0.06);
+}
+
+.btn-danger {
+  background: var(--danger);
+  color: #fff;
+}
+
+.btn-gold {
+  background: var(--gold-500);
+  color: var(--ink-900);
+}
+
+.btn-gold:hover {
+  background: var(--gold-400);
+}
+
+.btn-sm {
+  padding: 8px 14px;
+  font-size: 0.85rem;
+}
+
+.btn-icon {
+  padding: 8px;
+  background: transparent;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  color: var(--ink-700);
+}
+
+.card {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-card);
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 16px;
+}
+
+.field label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--ink-700);
+}
+
+.field input,
+.field select,
+.field textarea {
+  border: 1.5px solid var(--line);
+  border-radius: var(--radius-sm);
+  padding: 11px 14px;
+  font-size: 0.95rem;
+  background: var(--paper-0);
+}
+
+.field input:focus,
+.field select:focus,
+.field textarea:focus {
+  border-color: var(--green-700);
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(14, 92, 64, 0.15);
+}
+
+.field-error {
+  font-size: 0.8rem;
+  color: var(--danger);
+}
+
+.toast {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 1000;
+  max-width: 320px;
+}
+
+@media (max-width: 640px) {
+  .toast {
+    left: 16px;
+    right: 16px;
+    bottom: 16px;
+    max-width: none;
+  }
+}
+
+.skip-link:focus {
+  position: fixed;
+  top: 8px;
+  left: 8px;
+  background: var(--green-900);
+  color: #fff;
+  padding: 8px 14px;
+  border-radius: var(--radius-sm);
+  z-index: 2000;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+  }
+}
