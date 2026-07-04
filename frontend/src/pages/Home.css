@@ -1,0 +1,227 @@
+.home-page {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: var(--paper-100);
+  padding: 32px 20px;
+}
+
+.home-split-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: linear-gradient(135deg,
+      var(--paper-100) 0%,
+      var(--paper-100) 38%,
+      var(--green-800) 43%,
+      var(--green-900) 100%);
+}
+
+.home-flag {
+  position: absolute;
+  left: 5%;
+  bottom: 8%;
+  width: 150px;
+  height: auto;
+  color: var(--green-900);
+  opacity: 0.9;
+  z-index: 0;
+  filter: drop-shadow(0 14px 20px rgba(9, 30, 20, 0.25));
+  animation: flag-wave 4.5s ease-in-out infinite;
+  transform-origin: 4px 6px;
+}
+
+@keyframes flag-wave {
+
+  0%,
+  100% {
+    transform: rotate(-2deg);
+  }
+
+  50% {
+    transform: rotate(2deg);
+  }
+}
+
+.home-bg {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 15% 20%, rgba(201, 162, 39, 0.18), transparent 40%),
+    radial-gradient(circle at 85% 80%, rgba(244, 239, 227, 0.08), transparent 45%);
+  animation: drift 14s ease-in-out infinite alternate;
+}
+
+@keyframes drift {
+  from {
+    transform: translate(0, 0) scale(1);
+  }
+
+  to {
+    transform: translate(-2%, 2%) scale(1.04);
+  }
+}
+
+.home-content {
+  position: relative;
+  z-index: 1;
+  max-width: 480px;
+  width: 100%;
+  text-align: center;
+  color: var(--paper-100);
+  background: rgba(8, 36, 24, 0.55);
+  backdrop-filter: blur(4px);
+  border-radius: 22px;
+  padding: 40px 32px 34px;
+  box-shadow: 0 24px 60px -24px rgba(0, 0, 0, 0.45);
+  animation: home-rise 0.6s ease;
+}
+
+@keyframes home-rise {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.home-crest {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.home-title {
+  font-family: var(--font-display);
+  font-size: 2.6rem;
+  letter-spacing: 0.08em;
+  margin: 0;
+  color: #fff;
+}
+
+.home-subtitle {
+  font-size: 1.05rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--gold-400);
+  margin: 6px 0 4px;
+  position: relative;
+  display: inline-block;
+}
+
+.home-tagline {
+  font-size: 0.95rem;
+  color: rgba(244, 239, 227, 0.8);
+  margin: 0 0 34px;
+}
+
+.countdown {
+  background: rgba(244, 239, 227, 0.07);
+  border: 1px solid rgba(201, 162, 39, 0.28);
+  border-radius: var(--radius-md);
+  padding: 20px 20px 18px;
+  margin-bottom: 30px;
+  backdrop-filter: blur(6px);
+}
+
+.countdown-label {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: rgba(244, 239, 227, 0.65);
+  margin-bottom: 14px;
+}
+
+.countdown-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+
+.countdown-unit {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 4px 0;
+  border-right: 1px solid rgba(244, 239, 227, 0.12);
+}
+
+.countdown-unit:last-child {
+  border-right: none;
+}
+
+.countdown-value {
+  font-family: var(--font-display);
+  font-size: 1.9rem;
+  font-weight: 700;
+  color: #fff;
+  font-variant-numeric: tabular-nums;
+}
+
+.countdown-tag {
+  font-size: 0.66rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: rgba(244, 239, 227, 0.6);
+  margin-top: 3px;
+}
+
+.countdown-live {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-weight: 700;
+  color: var(--gold-400);
+  font-size: 0.95rem;
+  letter-spacing: 0.02em;
+}
+
+.countdown-live .status-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--gold-400);
+  animation: pulse-dot 1.6s ease-in-out infinite;
+}
+
+.home-cta {
+  width: 100%;
+  padding: 15px 20px;
+  font-size: 1rem;
+  text-decoration: none;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.home-cta:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 24px -10px rgba(0, 0, 0, 0.4);
+}
+
+.home-footnote {
+  margin-top: 30px;
+  font-size: 0.75rem;
+  color: rgba(244, 239, 227, 0.5);
+}
+
+@media (max-width: 480px) {
+  .home-title {
+    font-size: 2.1rem;
+  }
+
+  .countdown-value {
+    font-size: 1.5rem;
+  }
+
+  .home-flag {
+    width: 100px;
+  }
+}
