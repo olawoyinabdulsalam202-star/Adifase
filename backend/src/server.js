@@ -13,6 +13,7 @@ const seasonsRoutes = require('./routes/seasons');
 const uploadRoutes = require('./routes/upload');
 const { publicResultsRouter, adminResultsHandler } = require('./routes/results');
 const errorHandler = require('./middleware/errorHandler');
+const db = require('./db');
 
 // Fail fast if required secrets are missing
 ['JWT_VOTER_SECRET', 'JWT_ADMIN_SECRET', 'ADMIN_EMAIL', 'ADMIN_PASSWORD'].forEach((key) => {
@@ -55,6 +56,13 @@ app.use((req, res) => res.status(404).json({ error: 'Not found.' }));
 app.use(errorHandler);
 
 const PORT = process.env.PORT || 4000;
-app.listen(PORT, () => {
-  console.log(`Adifase '97 backend listening on port ${PORT}`);
-});
+db.init()
+  .then(() => {
+    app.listen(PORT, () => {
+      console.log(`Adifase '97 backend listening on port ${PORT}`);
+    });
+  })
+  .catch((err) => {
+    console.error('Failed to initialize database:', err);
+    process.exit(1);
+  });

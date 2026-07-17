@@ -29,7 +29,7 @@ router.post('/signup', async (req, res, next) => {
       return res.status(400).json({ error: 'Name, a valid email, and a password (min 6 characters) are required.' });
     }
 
-    const existing = db.prepare('SELECT id FROM voters WHERE email = ?').get(email.toLowerCase());
+    const existing = await db.get('SELECT id FROM voters WHERE email = ?', [email.toLowerCase()]);
     if (existing) {
       return res.status(409).json({ error: 'A voter with this email already exists.' });
     }
@@ -40,9 +40,10 @@ router.post('/signup', async (req, res, next) => {
       name,
       email: email.toLowerCase(),
     };
-    db.prepare(
-      'INSERT INTO voters (id, name, email, password_hash) VALUES (?, ?, ?, ?)'
-    ).run(voter.id, voter.name, voter.email, passwordHash);
+    await db.run(
+      'INSERT INTO voters (id, name, email, password_hash) VALUES (?, ?, ?, ?)',
+      [voter.id, voter.name, voter.email, passwordHash]
+    );
 
     const token = signVoterToken(voter);
     res.status(201).json({ token, voter });
@@ -59,7 +60,7 @@ router.post('/login', loginLimiter, async (req, res, next) => {
       return res.status(401).json({ error: 'Invalid email or password.' });
     }
 
-    const row = db.prepare('SELECT * FROM voters WHERE email = ?').get(email.toLowerCase());
+    const row = await db.get('SELECT * FROM voters WHERE email = ?', [email.toLowerCase()]);
     if (!row) return res.status(401).json({ error: 'Invalid email or password.' });
 
     const ok = await bcrypt.compare(password, row.password_hash);
